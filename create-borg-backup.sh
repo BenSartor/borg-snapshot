@@ -25,6 +25,7 @@ borg create\
 borg prune\
     --list\
     --prefix "${TAG_PREFIX}"\
+    --keep-secondly  4\
     --keep-hourly  6\
     --keep-daily   7\
     --keep-weekly  4\
