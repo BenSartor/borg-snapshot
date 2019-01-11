@@ -4,7 +4,7 @@ set -eu -o pipefail
 
 declare -rx BORG_REPO="$(hostname)@backup:test"
 declare -rx BORG_PASSPHRASE="Test1234"
-declare -rx BORG_RSH="ssh -i \"${HOME}.ssh/id_borgbackup_ed25519\""
+declare -rx BORG_RSH="ssh -i \"${HOME}/.ssh/id_borgbackup_ed25519\""
 
 declare -r TAG_PREFIX="cron-"
 
