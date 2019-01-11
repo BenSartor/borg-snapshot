@@ -2,7 +2,7 @@
 
 set -eu -o pipefail
 
-declare -rx BORG_REPO="$(hostname)@backup:test"
+declare -rx BORG_REPO="$(hostname)@backup:home-ben"
 declare -rx BORG_PASSPHRASE="Test1234"
 declare -rx BORG_RSH="ssh -i \"${HOME}/.ssh/id_borgbackup_ed25519\""
 
@@ -17,9 +17,13 @@ trap interrupted INT TERM
 
 borg create\
     --stats\
-    --exclude "${HOME}/delme/now"\
+    --exclude "${HOME}/.cache"\
+    --exclude "${HOME}/.gradle"\
+    --exclude "${HOME}/.m2"\
+    --exclude "${HOME}/.steam/steam/steamapps/"\
+    --exclude "${HOME}/Downloads"\
     ::${TAG_PREFIX}$(date "+%Y%m%d-%H%M%S")\
-    "${HOME}/delme"
+    "${HOME}"
 
 
 borg prune\
