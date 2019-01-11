@@ -29,4 +29,5 @@ borg prune\
     --keep-weekly  4\
     --keep-monthly 6
 
+borg list
 echo "success"
