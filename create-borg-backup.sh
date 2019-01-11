@@ -11,4 +11,8 @@ function interrupted {
 trap interrupted INT TERM
 
 
-borg create --stats $(hostname)@backup:test::$(date "+%Y%m%d-%H%M%S") "${HOME}/delme" --exclude "${HOME}/delme/now"
+borg create\
+    --stats\
+    --exclude "${HOME}/delme/now"\
+    $(hostname)@backup:test::$(date "+%Y%m%d-%H%M%S")\
+    "${HOME}/delme"
