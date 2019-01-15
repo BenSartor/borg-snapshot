@@ -2,7 +2,7 @@
 
 set -eu -o pipefail
 
-declare -rx BORG_REPO="$(hostname)@backup:home-ben"
+declare -rx BORG_REPO="$(hostname)@backup:home-$(whoami)"
 declare -rx BORG_PASSPHRASE="Test1234"
 declare -rx BORG_RSH="ssh -i \"${HOME}/.ssh/id_borgbackup_ed25519\""
 
