@@ -11,7 +11,7 @@ function interrupted {
 trap interrupted INT TERM
 
 
-"${BORG_BACKUP}" create\
+nice -n 19 ionice -c3 "${BORG_BACKUP}" create\
     --stats\
     --exclude "${HOME}/.cache"\
     --exclude "${HOME}/.gradle"\
