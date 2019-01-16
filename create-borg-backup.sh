@@ -16,8 +16,6 @@ function interrupted {
 trap interrupted INT TERM
 
 
-#borg init --encryption=repokey
-
 borg create\
     --stats\
     --exclude "${HOME}/.cache"\
