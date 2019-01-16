@@ -2,9 +2,11 @@
 
 set -eu -o pipefail
 
-declare -rx BORG_REPO="$(hostname)@backup:home-$(whoami)"
-declare -rx BORG_PASSPHRASE="Test1234"
-declare -rx BORG_RSH="ssh -i \"${HOME}/.ssh/id_borgbackup_ed25519\""
+. "$(dirname $(readlink -f $0))/create-borg-backup-settings.sh"
+
+declare -rx BORG_REPO=${BORG_REPO:-"$(hostname)@backup:home-$(whoami)"}
+declare -rx BORG_PASSPHRASE=${BORG_PASSPHRASE:-""}
+declare -rx BORG_RSH=${BORG_RSH:-"ssh -i \"${HOME}/.ssh/id_borgbackup_ed25519\""}
 
 declare -r TAG_PREFIX="cron-"
 
