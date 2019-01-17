@@ -13,13 +13,23 @@ trap interrupted INT TERM
 
 nice -n 19 ionice -c3 "${BORG_BACKUP}" create\
     --stats\
-    --exclude "${HOME}/.cache"\
-    --exclude "${HOME}/.gradle"\
-    --exclude "${HOME}/.m2"\
-    --exclude "${HOME}/.steam/steam/steamapps/"\
-    --exclude "${HOME}/Downloads"\
+    --exclude "/home/*/.cache"\
+    --exclude "/home/*/.gradle"\
+    --exclude "/home/*/.m2"\
+    --exclude "/home/*/.steam/steam/steamapps/"\
+    --exclude "/home/*/.local/share/akonadi"\
+    --exclude "/home/*/Downloads"\
+    --exclude "/var/cache/"\
+    --exclude "/var/tmp/"\
+    --exclude "/var/lib/flatpak"\
     ::${TAG_PREFIX}$(date "+%Y%m%d-%H%M%S")\
-    "${HOME}"
+    /etc\
+    /home\
+    /opt\
+    /root\
+    /srv\
+    /usr\
+    /var
 
 
 "${BORG_BACKUP}" prune\
