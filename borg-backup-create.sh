@@ -2,8 +2,9 @@
 
 set -eu -o pipefail
 
-declare -r BORG_BACKUP="$(dirname $(readlink -f $0))/borg-backup.sh"
 declare -r TAG_PREFIX="cron-"
+
+. "$(dirname $(readlink -f $0))/borg-backup-environment.sh"
 
 function interrupted {
     echo "Backup interrupted"
@@ -11,7 +12,7 @@ function interrupted {
 trap interrupted INT TERM
 
 
-nice -n 19 ionice -c3 "${BORG_BACKUP}" create    \
+nice -n 19 ionice -c3 borg create                \
     --stats                                      \
     --exclude "/home/*/.cache"                   \
     --exclude "/home/*/.gradle"                  \
@@ -33,7 +34,7 @@ nice -n 19 ionice -c3 "${BORG_BACKUP}" create    \
     /var
 
 
-"${BORG_BACKUP}" prune          \
+borg prune                      \
     --list                      \
     --prefix "${TAG_PREFIX}"    \
     --keep-secondly 4           \
@@ -42,5 +43,5 @@ nice -n 19 ionice -c3 "${BORG_BACKUP}" create    \
     --keep-weekly   4           \
     --keep-monthly  6
 
-"${BORG_BACKUP}" list
+borg list
 echo "success"
