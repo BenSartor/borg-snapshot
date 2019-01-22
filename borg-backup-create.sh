@@ -21,6 +21,7 @@ nice -n 19 ionice -c3 "${BORG_BACKUP}" create\
     --exclude "/home/*/Downloads"\
     --exclude "/var/cache/"\
     --exclude "/var/tmp/"\
+    --exclude "/var/lib/docker"\
     --exclude "/var/lib/flatpak"\
     ::${TAG_PREFIX}$(date "+%Y%m%d-%H%M%S")\
     /etc\
