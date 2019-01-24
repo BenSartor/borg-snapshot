@@ -14,6 +14,7 @@ trap interrupted INT TERM
 
 nice -n 19 ionice -c3 borg create                \
     --stats                                      \
+    --exclude-caches                             \
     --exclude "/home/*/.cache"                   \
     --exclude "/home/*/.gradle"                  \
     --exclude "/home/*/.m2"                      \
