@@ -1,0 +1,4 @@
+#!/bin/sh
+
+BORG_PASSPHRASE="n0t5ecure"
+SERVER=backup.example.org
