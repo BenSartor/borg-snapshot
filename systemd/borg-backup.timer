@@ -1,9 +1,0 @@
-[Unit]
-Description=continuous invocation of borg backup
-
-[Timer]
-OnActiveSec=30s
-OnUnitActiveSec=1h
-
-[Install]
-WantedBy=timers.target

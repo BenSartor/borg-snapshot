@@ -1,8 +1,0 @@
-[Unit]
-Description=continuous invocation of borg backup
-ConditionACPower=true
-After=network.target network-online.target systemd-networkd.service NetworkManager.service connman.service
-
-[Service]
-Type=oneshot
-ExecStart=/home/ben/dev/borg-backup/borg-client/borg-backup-create.sh
