@@ -34,5 +34,6 @@ OnUnitActiveSec=1h
 WantedBy=timers.target
 EOF
 
-echo "You may now run the following command to activate the systemd timer"
-echo "  systemctl enable --now borg-snapshot.timer"
+
+echo "start systemd timer"
+systemctl enable --now borg-snapshot.timer
