@@ -4,7 +4,7 @@ set -eu -o pipefail
 
 declare -r TAG_PREFIX="cron-"
 
-. "$(dirname $(readlink -f $0))/borg-backup-environment.sh"
+. "$(dirname $(readlink -f $0))/borg-snapshot-environment.sh"
 
 function interrupted {
     echo "Backup interrupted"

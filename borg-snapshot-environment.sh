@@ -2,7 +2,7 @@
 
 set -eu -o pipefail
 
-. "$(dirname $(readlink -f $0))/borg-backup-settings"
+. "$(dirname $(readlink -f $0))/borg-snapshot-settings"
 
 declare -r HOSTNAME=${HOSTNAME:-$(hostname)}
 declare -r SERVER=${SERVER:-""}

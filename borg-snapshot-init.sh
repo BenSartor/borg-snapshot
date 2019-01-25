@@ -2,7 +2,7 @@
 
 set -eu -o pipefail
 
-. "$(dirname $(readlink -f $0))/borg-backup-environment.sh"
+. "$(dirname $(readlink -f $0))/borg-snapshot-environment.sh"
 
 
 ## sshkey
