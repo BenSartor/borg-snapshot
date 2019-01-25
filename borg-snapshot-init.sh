@@ -18,7 +18,7 @@ declare -r SERVER_USER_BACKUP="${SERVER_USER_HOME}/backup"
 ssh root@"${SERVER}" "mkdir -p \"${SERVER_USER_BACKUP}"\"
 ssh root@"${SERVER}" "mkdir -p \"${SERVER_USER_HOME}/.ssh\""
 
-echo "command=\"cd ${SERVER_USER_BACKUP} ; borg serve --append-only --restrict-to-path ${SERVER_USER_BACKUP}\",restrict $(cat "${SSH_KEY}.pub")" | ssh root@"${SERVER}" "cat > \"${SERVER_USER_HOME}/.ssh/authorized_keys\""
+echo "command=\"cd ${SERVER_USER_BACKUP} ; borg serve --append-only --restrict-to-path ${SERVER_USER_BACKUP}\",restrict $(cat "${SSH_KEY_PUB}")" | ssh root@"${SERVER}" "cat > \"${SERVER_USER_HOME}/.ssh/authorized_keys\""
 
 ssh root@"${SERVER}" chown -R "${SERVER_USER}" "${SERVER_USER_HOME}/.ssh/"
 ssh root@"${SERVER}" chgrp -R "${SERVER_USER}" "${SERVER_USER_HOME}/.ssh/"

@@ -13,6 +13,6 @@ ssh root@"${SERVER}" rm -rf "${SERVER_USER_HOME}"
 
 echo "delete ssh key create for borg"
 rm "${SSH_KEY}"
-rm "${SSH_KEY}.pub"
+rm "${SSH_KEY_PUB}"
 
 echo "success"
