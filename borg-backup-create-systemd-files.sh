@@ -30,4 +30,5 @@ OnUnitActiveSec=1h
 WantedBy=timers.target
 EOF
 
-echo "success"
+echo "You may now run the following command to activate the systemd timer"
+echo "  systemctl enable --now borg-backup.timer"
