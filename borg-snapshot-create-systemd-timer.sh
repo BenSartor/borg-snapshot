@@ -37,3 +37,7 @@ EOF
 
 echo "start systemd timer"
 systemctl enable --now borg-snapshot.timer
+
+
+echo "You may now run the following command to watch log files"
+echo "  journalctl -f -u borg-snapshot.service"
