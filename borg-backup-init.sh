@@ -11,8 +11,6 @@ ssh-keygen -t ed25519 -C "${HOSTNAME} backup" -N "" -f "${SSH_KEY}" || echo "usi
 
 ## init borg repo on server
 echo "add borg user ${SERVER_USER}@${SERVER}"
-
-declare -r SERVER_USER_HOME="${SERVER_BACKUPS_DIRECTORY}/${SERVER_USER}"
 ssh root@"${SERVER}" adduser --disabled-password --gecos "" --home "${SERVER_USER_HOME}" "${SERVER_USER}" || echo "using existing user: ${SERVER_USER}"
 
 
