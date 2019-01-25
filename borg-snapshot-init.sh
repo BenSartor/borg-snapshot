@@ -24,6 +24,10 @@ ssh root@"${SERVER}" chown -R "${SERVER_USER}" "${SERVER_USER_HOME}/.ssh/"
 ssh root@"${SERVER}" chgrp -R "${SERVER_USER}" "${SERVER_USER_HOME}/.ssh/"
 ssh root@"${SERVER}" chmod -R og-rx "${SERVER_USER_HOME}/.ssh/"
 
+ssh root@"${SERVER}" chown -R "${SERVER_USER}" "${SERVER_USER_BACKUP}/"
+ssh root@"${SERVER}" chgrp -R "${SERVER_USER}" "${SERVER_USER_BACKUP}/"
+ssh root@"${SERVER}" chmod -R og-rx "${SERVER_USER_BACKUP}/"
+
 echo "restricted user on server to borg: ${SERVER_USER}"
 
 
