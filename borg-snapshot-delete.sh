@@ -5,6 +5,13 @@ set -eu -o pipefail
 . "$(dirname $(readlink -f $0))/borg-snapshot-environment.sh"
 
 
+if [ -e "${SYSTEMD_SERVICE}" ] ; then
+    echo "remove systemd timer"
+    systemctl disable borg-snapshot.timer
+    rm "${SYSTEMD_SERVICE}"
+    rm "${SYSTEMD_TIMER}"
+fi
+
 echo "remove user=${SERVER_USER} on server=${SERVER}"
 ssh root@"${SERVER}" deluser --remove-home "${SERVER_USER}"
 
