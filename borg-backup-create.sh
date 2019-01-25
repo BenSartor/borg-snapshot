@@ -14,6 +14,8 @@ trap interrupted INT TERM
 
 nice -n 19 ionice -c3 borg create                \
     --stats                                      \
+    --one-file-system                            \
+    --exclude-caches                             \
     --exclude "/home/*/.cache"                   \
     --exclude "/home/*/.gradle"                  \
     --exclude "/home/*/.m2"                      \
@@ -24,14 +26,10 @@ nice -n 19 ionice -c3 borg create                \
     --exclude "/var/tmp/"                        \
     --exclude "/var/lib/docker"                  \
     --exclude "/var/lib/flatpak"                 \
+    --exclude "/tmp"                             \
+    --exclude "/lost+found"                      \
     ::${TAG_PREFIX}$(date "+%Y%m%d-%H%M%S")      \
-    /etc                                         \
-    /home                                        \
-    /opt                                         \
-    /root                                        \
-    /srv                                         \
-    /usr                                         \
-    /var
+    /
 
 
 borg prune                      \
