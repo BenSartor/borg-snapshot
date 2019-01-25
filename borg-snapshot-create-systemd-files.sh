@@ -3,10 +3,10 @@
 set -eu -o pipefail
 
 declare -r SCRIPT_DIRECTORY=${SCRIPT_DIRECTORY:-$(dirname $(readlink -f $0))}
-declare -r DESTINATION_DIRECTORY=${DESTINATION_DIRECTORY:-"/etc/systemd/system"}
+declare -r SYSTEMD_DIRECTORY=${SYSTEMD_DIRECTORY:-"/etc/systemd/system"}
 declare -r DESCRIPTION=${DESCRIPTION:-"continuous invocation of borg backup"}
 
-cat <<EOF > "${DESTINATION_DIRECTORY}/borg-snapshot.service"
+cat <<EOF > "${SYSTEMD_DIRECTORY}/borg-snapshot.service"
 [Unit]
 Description=${DESCRIPTION}
 ConditionACPower=true
@@ -18,7 +18,7 @@ ExecStart=${SCRIPT_DIRECTORY}/borg-snapshot-create.sh
 EOF
 
 
-cat <<EOF > "${DESTINATION_DIRECTORY}/borg-snapshot.timer"
+cat <<EOF > "${SYSTEMD_DIRECTORY}/borg-snapshot.timer"
 [Unit]
 Description=${DESCRIPTION}
 
