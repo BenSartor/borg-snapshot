@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu -o pipefail
+
+BORG_REPO="$(hostname)@backup:home-$(whoami)"
+BORG_PASSPHRASE="Test1234"
+BORG_RSH="ssh -i \"${HOME}/.ssh/id_borgbackup_ed25519\""
