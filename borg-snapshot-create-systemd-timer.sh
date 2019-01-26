@@ -3,10 +3,13 @@
 set -eu -o pipefail
 
 declare -r SCRIPT_DIRECTORY=${SCRIPT_DIRECTORY:-$(dirname $(readlink -f $0))}
-declare -r DESTINATION_DIRECTORY=${DESTINATION_DIRECTORY:-"/etc/systemd/system"}
 declare -r DESCRIPTION=${DESCRIPTION:-"continuous invocation of borg backup"}
 
-cat <<EOF > "${DESTINATION_DIRECTORY}/borg-backup.service"
+. "${SCRIPT_DIRECTORY}/borg-snapshot-environment.sh"
+
+
+echo "create systemd file: ${SYSTEMD_SERVICE}"
+cat <<EOF > "${SYSTEMD_SERVICE}"
 [Unit]
 Description=${DESCRIPTION}
 ConditionACPower=true
@@ -14,11 +17,12 @@ After=network.target network-online.target systemd-networkd.service NetworkManag
 
 [Service]
 Type=oneshot
-ExecStart=${SCRIPT_DIRECTORY}/borg-backup-create.sh
+ExecStart=${SCRIPT_DIRECTORY}/borg-snapshot-create.sh
 EOF
 
 
-cat <<EOF > "${DESTINATION_DIRECTORY}/borg-backup.timer"
+echo "create systemd file: ${SYSTEMD_TIMER}"
+cat <<EOF > "${SYSTEMD_TIMER}"
 [Unit]
 Description=${DESCRIPTION}
 
@@ -30,5 +34,10 @@ OnUnitActiveSec=1h
 WantedBy=timers.target
 EOF
 
-echo "You may now run the following command to activate the systemd timer"
-echo "  systemctl enable --now borg-backup.timer"
+
+echo "start systemd timer"
+systemctl enable --now borg-snapshot.timer
+
+
+echo "You may now run the following command to watch log files"
+echo "  journalctl -f -u borg-snapshot.service"
