@@ -35,11 +35,12 @@ nice -n 19 ionice -c3 borg create                \
 borg prune                      \
     --list                      \
     --prefix "${TAG_PREFIX}"    \
-    --keep-secondly 4           \
+    --keep-minutely 4           \
     --keep-hourly   6           \
     --keep-daily    7           \
     --keep-weekly   4           \
-    --keep-monthly  6
+    --keep-monthly  6           \
+    --keep-yearly   5
 
 borg list
 echo "success"
