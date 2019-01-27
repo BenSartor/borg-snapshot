@@ -5,7 +5,7 @@
  * server with append only mode
  *
 
-borg is a command line tool configured with parameters and environment variables. [Setting it up](https://borgbackup.readthedocs.io/en/stable/) to regular create backups, usually means writing some scripts. This is where borg-snapshot steps in to help.
+borg is a command line tool configured with parameters and environment variables. [Setting it up](https://borgbackup.readthedocs.io/en/stable/) to regularly create backups, usually means writing some scripts. This is where borg-snapshot steps in to help.
 
 borg-snapshots lets you setup a client server backup solution creating backups every hour. It will backup almost your entire root file system. However some big cache files are excluded. It uses the one file system option, so every other filesystem will be excluded.
 
@@ -73,7 +73,7 @@ In order to restore files from your backup, you need to mount it.
 ```
 /root/dev/borg-snapshot/borg-snapshot.sh mount $(hostname)@backup.home.ben-sartor.de:$(hostname) tmp/
 ```
-You may you umount it like this:
+You may umount it like this:
 ```
 borg umount tmp/
 ```
