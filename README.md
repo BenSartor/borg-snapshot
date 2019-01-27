@@ -7,7 +7,7 @@
 
 borg is a command line tool configured with parameters and environment variables. [Setting it up](https://borgbackup.readthedocs.io/en/stable/) to regularly create backups, usually means writing some scripts. This is where borg-snapshot steps in to help.
 
-borg-snapshots lets you setup a client server backup solution creating backups every hour. It will backup almost your entire root file system. However some big cache files are excluded. It uses the one file system option, so every other filesystem will be excluded.
+borg-snapshots lets you setup a client server backup solution creating backups every hour. It will backup almost your entire root file system. However some big cache files are excluded (see [borg-snapshot-create.sh](borg-snapshot-create.sh)). It uses the one file system option, so every other filesystem will be excluded.
 
 I use it to backup my servers and desktops.
 
