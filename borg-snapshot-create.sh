@@ -2,7 +2,7 @@
 
 set -eu -o pipefail
 
-declare -r TAG_PREFIX="cron-"
+declare -r TAG_PREFIX="borg-snapshot-"
 
 . "$(dirname $(readlink -f $0))/borg-snapshot-environment.sh"
 
