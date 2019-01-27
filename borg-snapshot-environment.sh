@@ -17,6 +17,6 @@ declare -r SYSTEMD_SERVICE=${SYSTEMD_SERVICE:-"${SYSTEMD_DIRECTORY}/borg-snapsho
 declare -r SYSTEMD_TIMER=${SYSTEMD_TIMER:-"${SYSTEMD_DIRECTORY}/borg-snapshot.timer"}
 
 
-declare -rx BORG_REPO=${BORG_REPO:-"${HOSTNAME}@${SERVER}:${HOSTNAME}"}
+declare -rx BORG_REPO=${BORG_REPO:-"${SERVER_USER}@${SERVER}:${HOSTNAME}"}
 declare -rx BORG_PASSPHRASE=${BORG_PASSPHRASE:-""}
 declare -rx BORG_RSH=${BORG_RSH:-"ssh -i \"${SSH_KEY}\""}
