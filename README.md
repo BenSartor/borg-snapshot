@@ -71,11 +71,11 @@ sudo ./borg-snapshot.sh list
 
 In order to restore files from your backup, you need to mount it.
 ```
-/root/dev/borg-snapshot/borg-snapshot.sh mount $(hostname)@backup.home.ben-sartor.de:$(hostname) tmp/
+sudo ./borg-snapshot-mount.sh
 ```
 You may umount it like this:
 ```
-borg umount tmp/
+borg umount /media/backup
 ```
 
 ## Deinstallation
