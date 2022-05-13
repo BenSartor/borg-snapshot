@@ -22,6 +22,7 @@ nice -n 19 ionice -c3 borg create                \
     --exclude "/home/*/.steam/steam/steamapps/"  \
     --exclude "/home/*/.local/share/akonadi"     \
     --exclude "/home/*/Downloads"                \
+    --exclude "/home/*/delme"                    \
     --exclude "/var/cache/"                      \
     --exclude "/var/tmp/"                        \
     --exclude "/var/lib/docker"                  \
