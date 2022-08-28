@@ -6,6 +6,9 @@ declare -r TAG_PREFIX="borg-snapshot-"
 
 . "$(dirname $(readlink -f $0))/borg-snapshot-environment.sh"
 
+declare -r ADDITONAL_BACKUP_PATHS=${ADDITONAL_BACKUP_PATHS:-""}
+
+
 function interrupted {
     echo "Backup interrupted"
 }
@@ -31,7 +34,7 @@ nice -n 19 ionice -c3 borg create                \
     --exclude "/tmp"                             \
     --exclude "/lost+found"                      \
     ::${TAG_PREFIX}$(date "+%Y%m%d-%H%M%S")      \
-    /
+    / "${ADDITONAL_BACKUP_PATHS}"
 
 
 borg prune                      \

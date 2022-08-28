@@ -2,3 +2,5 @@
 
 BORG_PASSPHRASE="n0t5ecure"
 SERVER=backup.example.org
+
+#ADDITONAL_BACKUP_PATHS="/media/cloud-storage/"
