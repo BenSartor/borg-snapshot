@@ -31,6 +31,7 @@ nice -n 19 ionice -c3 borg create                \
     --exclude "/var/lib/docker"                  \
     --exclude "/var/lib/flatpak"                 \
     --exclude "/var/lib/libvirt/images"          \
+    --exclude "/var/lib/docker"                  \
     --exclude "/tmp"                             \
     --exclude "/lost+found"                      \
     ::${TAG_PREFIX}$(date "+%Y%m%d-%H%M%S")      \
