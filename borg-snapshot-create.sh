@@ -47,5 +47,6 @@ borg prune                      \
     --keep-monthly  6           \
     --keep-yearly   5
 
+borg compact
 borg list
 echo "success"
