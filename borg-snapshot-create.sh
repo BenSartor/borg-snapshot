@@ -34,7 +34,7 @@ nice -n 19 ionice -c3 borg create                \
     --exclude "/tmp"                             \
     --exclude "/lost+found"                      \
     ::${TAG_PREFIX}$(date "+%Y%m%d-%H%M%S")      \
-    / "${ADDITONAL_BACKUP_PATHS}"
+    / ${ADDITONAL_BACKUP_PATHS}
 
 
 borg prune                      \
